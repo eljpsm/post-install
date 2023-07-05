@@ -5,9 +5,6 @@
 # This is a security measure to prevent the user from installing packages as root.
 if [ "$(id -u)" -eq 0 ]; then echo "Must be a non-root user" >&2; exit 1; fi
 
-# Install dotfiles.
-chezmoi init git@github.com:eljpsm/dotfiles.git
-
 # List all APT packages.
 #
 # Add any APT packages that you want to install to this array.

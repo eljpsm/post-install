@@ -3,5 +3,6 @@
 ## Instructions
 
 1. Install [chezmoi](https://www.chezmoi.io/install/).
-2. Install the preferred script
-   using `bash <(curl -Ls https://github.com/eljpsm/post-install/raw/main/script/$SCRIPT.sh)`.
+2. Install preferred dotfiles
+   `chezmoi init git@github.com:eljpsm/$NAME.git`
+3. Install the preferred script `bash <(curl -Ls https://github.com/eljpsm/post-install/raw/main/script/$SCRIPT.sh)`.
