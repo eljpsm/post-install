@@ -32,6 +32,9 @@ curl -sS https://starship.rs/install.sh | sh
 # Install n.
 curl -L https://bit.ly/n-install | bash -s -- -y
 
+# Source the ZSH configuration.
+source ~/.zshrc
+
 # List all NPM packages.
 #
 # Add any NPM packages that you want to install to this array.
@@ -41,7 +44,7 @@ npm=(
 	serverless
 	yarn
 )
-npm install -g "${npm[*]}"
+npm install -g "${npm[@]}"
 
 # Install pipx.
 #
