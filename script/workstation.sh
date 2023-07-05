@@ -26,7 +26,7 @@ apt=(
 	emacs
 )
 sudo apt update
-sudo apt install "${apt[*]}" -y
+sudo apt install "${apt[@]}" -y
 
 # Install zplug.
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
@@ -59,7 +59,6 @@ pipx=(
 	poetry
 	aws-mfa
 	awscli
-	shell-gpt
 )
 for val in "${pipx[@]}"; do
 	pipx install "$val"
