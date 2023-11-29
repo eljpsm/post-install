@@ -14,26 +14,17 @@ apt=(
 	git
 	git-crypt
 	direnv
-	stow
 	nmap
 	libfuse2
 	python3-pip
 	python3-venv
 	neovim
-	emacs
 )
 sudo apt update
 sudo apt install "${apt[@]}" -y
 
-# Install zplug.
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-# Install Starship.
-curl -sS https://starship.rs/install.sh | sh
 # Install n.
 curl -L https://bit.ly/n-install | bash -s -- -y
-
-# Source the ZSH configuration.
-source ~/.zshrc
 
 # List all NPM packages.
 #
@@ -42,7 +33,6 @@ source ~/.zshrc
 # Note that each package is installed globally.
 npm=(
 	serverless
-	yarn
 )
 npm install -g "${npm[@]}"
 
@@ -56,7 +46,6 @@ python3 -m pipx ensurepath
 #
 # Add any Python packages that you want to install to this array.
 pipx=(
-	poetry
 	aws-mfa
 	awscli
 )
@@ -64,5 +53,3 @@ for val in "${pipx[@]}"; do
 	pipx install "$val"
 done
 
-# Change the user's shell to ZSH.
-chsh -s "$(which zsh)"
