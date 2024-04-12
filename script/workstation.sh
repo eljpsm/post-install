@@ -10,9 +10,9 @@ if [ "$(id -u)" -eq 0 ]; then echo "Must be a non-root user" >&2; exit 1; fi
 # Add any APT packages that you want to install to this array.
 apt=(
 	curl
-	zsh
 	git
 	git-crypt
+	stow
 	direnv
 	nmap
 	libfuse2
@@ -24,17 +24,7 @@ sudo apt update
 sudo apt install "${apt[@]}" -y
 
 # Install n.
-curl -L https://bit.ly/n-install | bash -s -- -y
-
-# List all NPM packages.
-#
-# Add any NPM packages that you want to install to this array.
-#
-# Note that each package is installed globally.
-npm=(
-	serverless
-)
-npm install -g "${npm[@]}"
+curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts
 
 # Install pipx.
 #
@@ -46,7 +36,6 @@ python3 -m pipx ensurepath
 #
 # Add any Python packages that you want to install to this array.
 pipx=(
-	aws-mfa
 	awscli
 )
 for val in "${pipx[@]}"; do
