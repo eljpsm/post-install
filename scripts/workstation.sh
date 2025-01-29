@@ -19,18 +19,15 @@ apt=(
 	python3-pip
 	python3-venv
 	neovim
+	pipx
 )
 sudo apt update
 sudo apt install "${apt[@]}" -y
 
 # Install n.
-curl -fsSL https://raw.githubusercontent.com/tj/n/master/bin/n | bash -s lts
+curl -L https://bit.ly/n-install | bash 
 
-# Install pipx.
-#
-# This is an isolated environment for Python packages.
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
+pipx ensurepath
 
 # List all Python packages.
 #
