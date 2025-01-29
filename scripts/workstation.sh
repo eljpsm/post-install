@@ -9,7 +9,6 @@ if [ "$(id -u)" -eq 0 ]; then echo "Must be a non-root user" >&2; exit 1; fi
 apt_packages=(
 	curl
 	git
-	git-crypt
 	stow
 	direnv
 	nmap
