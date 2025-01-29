@@ -27,13 +27,16 @@ sudo apt install "${apt[@]}" -y
 # Install n.
 curl -L https://bit.ly/n-install | bash 
 
+# Install pnpm.
+npm install -g pnpm@latest-10
+
+# Install pipx.
 pipx ensurepath
 
 # List all Python packages.
 #
 # Add any Python packages that you want to install to this array.
 pipx=(
-	awscli
 )
 for val in "${pipx[@]}"; do
 	pipx install "$val"
