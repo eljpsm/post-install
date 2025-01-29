@@ -5,10 +5,8 @@
 # This is a security measure to prevent the user from installing packages as root.
 if [ "$(id -u)" -eq 0 ]; then echo "Must be a non-root user" >&2; exit 1; fi
 
-# List all APT packages.
-#
-# Add any APT packages that you want to install to this array.
-apt=(
+# List all apt packages.
+apt_packages=(
 	curl
 	git
 	git-crypt
@@ -22,23 +20,32 @@ apt=(
 	pipx
 )
 sudo apt update
-sudo apt install "${apt[@]}" -y
+sudo apt install "${apt_packages[@]}" -y
+
+# List all snap packages with classic flag.
+snap_classic_packages=(
+	aws-cli
+	code
+)
+sudo snap install "${snap_classic_packages[@]}" --classic
 
 # Install n.
 curl -L https://bit.ly/n-install | bash 
 
-# Install pnpm.
-npm install -g pnpm@latest-10
+# List all npm packages.
+npm_packages=(
+	pnpm
+)
+for pkg in "${npm_packages[@]}"; do
+	npm install -g "$pkg"
+done
 
 # Install pipx.
 pipx ensurepath
 
-# List all Python packages.
-#
-# Add any Python packages that you want to install to this array.
-pipx=(
+# List all pipx packages.
+pipx_packages=(
 )
-for val in "${pipx[@]}"; do
-	pipx install "$val"
+for pkg in "${pipx_packages[@]}"; do
+	pipx install "$pkg"
 done
-
