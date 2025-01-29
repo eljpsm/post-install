@@ -51,6 +51,7 @@ curl -L https://bit.ly/n-install | bash
 # List all npm packages.
 npm_packages=(
 	pnpm
+	bun
 )
 for pkg in "${npm_packages[@]}"; do
 	npm install -g "$pkg"
