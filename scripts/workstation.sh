@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Install Atuin
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+# After installing Atuin, you will need to login and sync.
+# atuin login -u <USERNAME>
+# atuin sync
+
 # Make sure that the script is not being run as root.
 #
 # This is a security measure to prevent the user from installing packages as root.
@@ -10,7 +16,6 @@ apt_packages=(
 	build-essential
 	curl
 	git
-	stow
 	direnv
 	nmap
 	libfuse2
@@ -18,6 +23,13 @@ apt_packages=(
 	python3-venv
 	neovim
 	pipx
+	libpq-dev
+	# https://github.com/Automattic/node-canvas/issues/1065
+	libpixman-1-dev
+	libcairo2-dev
+	libpango1.0-dev
+	libjpeg8-dev
+	libgif-dev
 )
 sudo apt update
 sudo apt install "${apt_packages[@]}" -y
